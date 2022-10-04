@@ -4,8 +4,6 @@ export class Negociacao {
         this.quantidade = quantidade;
         this.valor = valor;
     }
-    //todos tem acesso, mas ngm vai poder alterar (somente leitura)
-    //ngm altera por atribuição - objeto = new objeto
     get volume() {
         return this.quantidade * this.valor;
     }
