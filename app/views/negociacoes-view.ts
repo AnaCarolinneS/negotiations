@@ -4,7 +4,7 @@ export class NegociacoesView {
     private elemento: HTMLElement;
 
     constructor(seletor: string) {
-    this.elemento = document.querySelector(seletor);
+        this.elemento = document.querySelector(seletor);
     };
 
 
@@ -18,21 +18,23 @@ export class NegociacoesView {
                     <th>VALOR</th>
                 </tr>
             </thead>
+
             <tbody>
-            <tr>
             ${model.lista().map(negociacao => {
-                return `
+            return `
                 <tr>
-                <td>${negociacao.data}</td>
-                <td>${negociacao.quantidade}</td>
+                    <td> ${new Intl.DateTimeFormat()
+                        .format(negociacao.data)}
+                    </td>
+                    <td>${negociacao.quantidade}
+                    </td>
+                    <td>${negociacao.valor}
+                    </td>
                 </tr>
                 `;
-
-            }).join('')}  
-            </tr>
+        }).join('')}  
             </tbody>
         </table>
-
         `;
     }
     update(model: Negociacoes): void {
@@ -41,8 +43,8 @@ export class NegociacoesView {
         this.elemento.innerHTML = template;
     }
 
-   //para cada item da lista, ira fazer um map, pq o resultado tem que ser convertido numa string, para ser inserida no tbody. model.list().map
+    //para cada item da lista, ira fazer um map, pq o resultado tem que ser convertido numa string, para ser inserida no tbody. model.list().map
 
-   //depois de pegar minha lista convertida em um array, onde cada elemento é uma string, torna todo mundo em uma stringzona, com o separador sendo um ''.
+    //depois de pegar minha lista convertida em um array, onde cada elemento é uma string, torna todo mundo em uma stringzona, com o separador sendo um ''.
     //metodo update - para renderizar o template, através do elmeento que eu capturei, atraves do construtor.
 }
